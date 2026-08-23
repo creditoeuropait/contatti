@@ -3,83 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatti</title>
+    <title>Sviluppatore Web | Contatti</title>
     <style>
         :root {
-            --bg-color: #121212;
-            --card-color: #1e1e1e;
+            --bg-color: #0f0f13;
+            --card-color: #1a1a24;
             --text-color: #ffffff;
-            --accent-color: #fe2c55; /* Couleur rouge TikTok */
+            --accent-color: #008c45; /* Vert italien */
+            --sub-text: #9ca3af;
+            --verified-color: #20aaee; /* Bleu certification */
         }
+
+        /* Configuration globale pour coller le drapeau tout en bas */
+        html, body {
+            height: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            margin: 0;
-            padding: 40px 20px;
+            padding: 50px 20px 40px 20px; /* Espace en bas pour le footer */
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
+            position: relative;
         }
-        .profile-img {
-            width: 96px;
-            height: 96px;
+
+        /* 🇮🇹 Drapeau Italien Rond (Avatar) */
+        .flag-avatar {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            background: var(--accent-color);
-            margin-bottom: 15px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            border: 3px solid #2a2a3a;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
+
+        .flag-avatar:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .flag-green { width: 33.33%; background-color: #008c45; }
+        .flag-white { width: 33.33%; background-color: #f4f5f0; }
+        .flag-red   { width: 33.33%; background-color: #cd212a; }
+
+        /* Zone du nom */
+        .name-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin: 0 0 8px 0;
+        }
+
         h1 {
-            font-size: 20px;
-            margin: 0 0 5px 0;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
         }
+
+        .verified-badge {
+            width: 20px;
+            height: 20px;
+            fill: var(--verified-color);
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .tag {
+            background: rgba(0, 140, 69, 0.15);
+            color: #34d399;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+
         p {
             font-size: 14px;
-            color: #aaa;
-            margin: 0 0 30px 0;
+            color: var(--sub-text);
+            margin: 0 0 35px 0;
+            text-align: center;
+            max-width: 300px;
+            line-height: 1.5;
         }
+
         .links-container {
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
+            margin-bottom: auto; /* Pousse le footer vers le bas */
         }
+
         .link-card {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: var(--card-color);
             color: var(--text-color);
             text-decoration: none;
             padding: 16px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            text-align: center;
+            margin-bottom: 16px;
+            border-radius: 12px;
             font-weight: 600;
             font-size: 16px;
-            border: 1px solid #333;
-            transition: transform 0.2s, border-color 0.2s;
+            border: 1px solid #2a2a3a;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease-in-out;
         }
+
         .link-card:hover {
-            transform: scale(1.02);
-            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            border-color: #cd212a;
+            background-color: #222230;
+            box-shadow: 0 6px 20px rgba(205, 33, 42, 0.15);
         }
+
+        .icon {
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        /* 📋 Pied de page (Footer) */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 11px;
+            color: #555566;
+            letter-spacing: 0.5px;
+        }
+
+        /* 🇮🇹 Fine bande drapeau italien en bas de page */
+        .bottom-flag-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10  px; /* Toute petite hauteur */
+            display: flex;
+        }
+
+        .bar-green { width: 33.33%; background-color: #008c45; }
+        .bar-white { width: 33.33%; background-color: #f4f5f0; }
+        .bar-red   { width: 33.33%; background-color: #cd212a; }
     </style>
 </head>
 <body>
 
-    <!-- Votre Logo ou Avatar Anonyme -->
-    <div class="profile-img"></div>
+    <!-- Avatar -->
+    <div class="flag-avatar">
+        <div class="flag-green"></div>
+        <div class="flag-white"></div>
+        <div class="flag-red"></div>
+    </div>
 
-    <h1>@VotreNomTikTok</h1>
-    <p>Sviluppatore Web | Contattami qui sotto</p>
+    <!-- Nom + Badge Certifié -->
+    <div class="name-container">
+        <h1>@Raffaele Santabarbara</h1>
+        <svg class="verified-badge" viewBox="0 0 24 24">
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+    </div>
 
+    <div class="tag">CreditoEuropa</div>
+    <p>FINANZIAMENTO SENZA BUSTA PAGA <br><br> Molto Sicuro, Affidabile e Completamente Trasparente <br><br> Magg informazioni via e-mail .</p>
+
+    <!-- Boutons -->
     <div class="links-container">
-        <!-- Lien WhatsApp Direct -->
-        <!-- Remplissez avec votre numéro au format international (ex: 33600000000 sans le +) -->
-        <a href="https://wa.me" class="link-card" target="_blank">💬 Chat su WhatsApp</a>
+        <a href="mailto:creditoeuropa.it@gmail.com?subject=Contatto%20da%20TikTok" class="link-card">
+            <span class="icon">✉️</span> Invia un'E-mail
+        </a>
+    </div>
 
-        <!-- Lien Telegram Direct -->
-        <!-- Remplissez avec votre @username Telegram (sans le @) -->
-        <a href="https://t.me" class="link-card" target="_blank">✈️ Canale Telegram</a>
+    <!-- Pied de page -->
+    <footer>
+        &copy; 2026 @CreditoEuropa  . Tutti i diritti riservati.
+    </footer>
 
-        <!-- Lien E-mail Direct -->
-        <a href="mailto:votre-email-anonyme@proton.me" class="link-card">✉️ Invia un'E-mail</a>
+    <!-- Bande italienne tout en bas -->
+    <div class="bottom-flag-bar">
+        <div class="bar-green"></div>
+        <div class="bar-white"></div>
+        <div class="bar-red"></div>
     </div>
 
 </body>
