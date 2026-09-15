@@ -3,29 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finanziamento Senza Busta Paga</title>
+    <title>CreditoEuropa - Contatti</title>
+
     <style>
         :root {
             --bg-color: #0f0f13;
             --card-color: #1a1a24;
             --text-color: #ffffff;
-            --accent-color: #008c45; /* Vert italien */
+            --accent-color: #008c45;
             --sub-text: #9ca3af;
-            --verified-color: #20aaee; /* Bleu certification */
+            --verified-color: #20aaee;
+            --red-color: #cd212a;
         }
 
-        /* Configuration globale pour coller le drapeau tout en bas */
-        html, body {
-            height: 100%;
-            margin: 0;
+        * {
             box-sizing: border-box;
         }
 
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            padding: 50px 20px 40px 20px; /* Espace en bas pour le footer */
+            padding: 50px 20px 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -33,7 +38,10 @@
             position: relative;
         }
 
-        /* 🇮🇹 Drapeau Italien Rond (Avatar) */
+        /* =========================
+           AVATAR DRAPEAU ITALIEN
+        ========================= */
+
         .flag-avatar {
             width: 100px;
             height: 100px;
@@ -50,17 +58,31 @@
             transform: rotate(5deg) scale(1.05);
         }
 
-        .flag-green { width: 33.33%; background-color: #008c45; }
-        .flag-white { width: 33.33%; background-color: #f4f5f0; }
-        .flag-red   { width: 33.33%; background-color: #cd212a; }
+        .flag-green {
+            width: 33.33%;
+            background-color: #008c45;
+        }
 
-        /* Zone du nom */
+        .flag-white {
+            width: 33.33%;
+            background-color: #f4f5f0;
+        }
+
+        .flag-red {
+            width: 33.33%;
+            background-color: #cd212a;
+        }
+
+        /* =========================
+           NOM
+        ========================= */
+
         .name-container {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
-            margin: 0 0 8px 0;
+            margin-bottom: 8px;
         }
 
         h1 {
@@ -78,6 +100,10 @@
             flex-shrink: 0;
         }
 
+        /* =========================
+           TAG
+        ========================= */
+
         .tag {
             background: rgba(0, 140, 69, 0.15);
             color: #34d399;
@@ -90,22 +116,31 @@
             border: 1px solid rgba(52, 211, 153, 0.2);
         }
 
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
         p {
             font-size: 14px;
             color: var(--sub-text);
-            margin: 0 0 35px 0;
+            margin: 0 0 25px;
             text-align: center;
-            max-width: 300px;
+            max-width: 320px;
             line-height: 1.5;
         }
+
+        /* =========================
+           ZONE BOUTONS
+        ========================= */
 
         .links-container {
             width: 100%;
             max-width: 380px;
-            margin-bottom: auto; /* Pousse le footer vers le bas */
+            margin-bottom: auto;
         }
 
         .link-card {
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -113,18 +148,19 @@
             color: var(--text-color);
             text-decoration: none;
             padding: 16px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             border-radius: 12px;
             font-weight: 600;
             font-size: 16px;
             border: 1px solid #2a2a3a;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             transition: all 0.2s ease-in-out;
+            cursor: pointer;
         }
 
         .link-card:hover {
             transform: translateY(-2px);
-            border-color: #cd212a;
+            border-color: var(--red-color);
             background-color: #222230;
             box-shadow: 0 6px 20px rgba(205, 33, 42, 0.15);
         }
@@ -134,7 +170,144 @@
             font-size: 20px;
         }
 
-        /* 📋 Pied de page (Footer) */
+        /* =========================
+           AIDE TIKTOK
+        ========================= */
+
+        .browser-help {
+            display: none;
+            width: 100%;
+            max-width: 380px;
+            margin: 4px auto 16px;
+            padding: 16px 15px;
+            background: linear-gradient(
+                135deg,
+                rgba(205, 33, 42, 0.16),
+                rgba(0, 140, 69, 0.10)
+            );
+            border: 1px solid rgba(205, 33, 42, 0.35);
+            border-radius: 14px;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .browser-help.show {
+            display: block;
+        }
+
+        .help-title {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .help-text {
+            color: #d1d5db;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .three-dots {
+            display: inline-block;
+            color: #ffffff;
+            background: #292936;
+            border-radius: 6px;
+            padding: 2px 7px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin: 0 3px;
+        }
+
+        /* =========================
+           FLÈCHE ANIMÉE
+        ========================= */
+
+        .arrow-area {
+            height: 58px;
+            position: relative;
+            margin-top: 3px;
+        }
+
+        .arrow {
+            font-size: 42px;
+            color: #ffcc00;
+            line-height: 1;
+            display: inline-block;
+            transform: rotate(-25deg);
+            animation: bounceArrow 0.9s infinite alternate;
+            filter: drop-shadow(0 2px 5px rgba(255, 204, 0, 0.35));
+        }
+
+        .arrow-label {
+            position: absolute;
+            right: 12px;
+            top: 24px;
+            color: #ffcc00;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        @keyframes bounceArrow {
+            from {
+                transform: translateY(0) rotate(-25deg);
+            }
+
+            to {
+                transform: translateY(-7px) rotate(-25deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           BOUTON COPIER
+        ========================= */
+
+        .copy-email {
+            background: transparent;
+            color: #9ca3af;
+            border: none;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 8px 10px;
+            margin-top: -3px;
+            transition: color 0.2s ease;
+        }
+
+        .copy-email:hover {
+            color: #ffffff;
+        }
+
+        .copy-message {
+            display: none;
+            color: #34d399;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 3px;
+        }
+
+        .copy-message.show {
+            display: block;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
             width: 100%;
             text-align: center;
@@ -144,21 +317,55 @@
             letter-spacing: 0.5px;
         }
 
-        /* 🇮🇹 Fine bande drapeau italien en bas de page */
+        /* =========================
+           DRAPEAU BAS DE PAGE
+        ========================= */
+
         .bottom-flag-bar {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 10px; /* Toute petite hauteur */
+            height: 10px;
             display: flex;
         }
 
-        .bar-green { width: 33.33%; background-color: #008c45; }
-        .bar-white { width: 33.33%; background-color: #f4f5f0; }
-        .bar-red   { width: 33.33%; background-color: #cd212a; }
+        .bar-green {
+            width: 33.33%;
+            background-color: #008c45;
+        }
+
+        .bar-white {
+            width: 33.33%;
+            background-color: #f4f5f0;
+        }
+
+        .bar-red {
+            width: 33.33%;
+            background-color: #cd212a;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 400px) {
+            body {
+                padding: 35px 16px 35px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .flag-avatar {
+                width: 90px;
+                height: 90px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Avatar -->
@@ -168,35 +375,175 @@
         <div class="flag-red"></div>
     </div>
 
-    <!-- Nom + Badge Certifié -->
+    <!-- Nom + Badge -->
     <div class="name-container">
         <h1>@Raffaele Santabarbara</h1>
-        <svg class="verified-badge" viewBox="0 0 24 24">
-            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+
+        <svg class="verified-badge" viewBox="0 0 24 24" aria-label="Verificato">
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l1.41 1.42L10 17z"/>
         </svg>
     </div>
 
     <div class="tag">CreditoEuropa</div>
-    <p>FINANZIAMENTO SENZA BUSTA PAGA <br><br> Molto Sicuro, Affidabile e Completamente Trasparente <br><br> Magg informazioni via e-mail .</p>
+
+    <p>
+        FINANZIAMENTO SENZA BUSTA PAGA
+        <br><br>
+        Molto Sicuro, Affidabile e Completamente Trasparente
+        <br><br>
+        Maggiori informazioni via e-mail.
+    </p>
 
     <!-- Boutons -->
     <div class="links-container">
-        <a href="mailto:creditoeuropa.it@gmail.com?subject=Contatto%20da%20TikTok" class="link-card">
-            <span class="icon">✉️</span> Invia un'E-mail
+
+        <!-- Bouton Email -->
+        <a
+            href="mailto:creditoeuropa.it@gmail.com?subject=Contatto%20da%20TikTok"
+            class="link-card"
+            id="emailButton"
+        >
+            <span class="icon">✉️</span>
+            Invia un'E-mail
         </a>
+
+        <!-- Aide TikTok -->
+        <div class="browser-help" id="browserHelp">
+
+            <div class="help-title">
+                ⚠️ L'e-mail non si apre?
+            </div>
+
+            <p class="help-text">
+                Se stai usando TikTok, tocca i
+                <span class="three-dots">•••</span>
+                in alto e scegli
+                <strong>« Apri nel browser »</strong>.
+            </p>
+
+            <div class="arrow-area">
+                <span class="arrow">↗</span>
+                <span class="arrow-label">
+                    Tocca qui sopra
+                </span>
+            </div>
+
+        </div>
+
+        <!-- Copier l'adresse -->
+        <button
+            type="button"
+            class="link-card"
+            id="copyButton"
+        >
+            <span class="icon">📋</span>
+            Copia indirizzo e-mail
+        </button>
+
+        <div class="copy-message" id="copyMessage">
+            ✓ Indirizzo e-mail copiato!
+        </div>
+
     </div>
 
-    <!-- Pied de page -->
+    <!-- Footer -->
     <footer>
-        &copy; 2026 @CreditoEuropa  . Tutti i diritti riservati.
+        &copy; 2026 @CreditoEuropa. Tutti i diritti riservati.
     </footer>
 
-    <!-- Bande italienne tout en bas -->
+    <!-- Drapeau italien -->
     <div class="bottom-flag-bar">
         <div class="bar-green"></div>
         <div class="bar-white"></div>
         <div class="bar-red"></div>
     </div>
+
+    <script>
+        const email = "creditoeuropa.it@gmail.com";
+        const emailButton = document.getElementById("emailButton");
+        const browserHelp = document.getElementById("browserHelp");
+        const copyButton = document.getElementById("copyButton");
+        const copyMessage = document.getElementById("copyMessage");
+
+        /*
+         * Détection du navigateur intégré de TikTok
+         */
+        const userAgent = navigator.userAgent.toLowerCase();
+
+        const isTikTok =
+            userAgent.includes("tiktok") ||
+            userAgent.includes("musical_ly");
+
+        /*
+         * Si la page est ouverte depuis TikTok,
+         * on affiche directement les instructions.
+         */
+        if (isTikTok) {
+            browserHelp.classList.add("show");
+        }
+
+        /*
+         * Quand le client clique sur "Invia un'E-mail",
+         * on laisse d'abord mailto fonctionner.
+         *
+         * Si le navigateur bloque mailto, l'aide apparaît.
+         */
+        emailButton.addEventListener("click", function() {
+
+            if (isTikTok) {
+                setTimeout(function() {
+                    browserHelp.classList.add("show");
+                }, 700);
+            }
+        });
+
+        /*
+         * Copier l'adresse e-mail
+         */
+        copyButton.addEventListener("click", async function() {
+
+            try {
+
+                await navigator.clipboard.writeText(email);
+
+                copyMessage.textContent =
+                    "✓ Indirizzo e-mail copiato!";
+
+                copyMessage.classList.add("show");
+
+                setTimeout(function() {
+                    copyMessage.classList.remove("show");
+                }, 3000);
+
+            } catch (error) {
+
+                /*
+                 * Solution de secours pour certains anciens navigateurs
+                 */
+                const textArea = document.createElement("textarea");
+
+                textArea.value = email;
+                textArea.style.position = "fixed";
+                textArea.style.opacity = "0";
+
+                document.body.appendChild(textArea);
+
+                textArea.select();
+                document.execCommand("copy");
+
+                document.body.removeChild(textArea);
+
+                copyMessage.textContent =
+                    "✓ Indirizzo e-mail copiato!";
+
+                copyMessage.classList.add("show");
+
+                setTimeout(function() {
+                    copyMessage.classList.remove("show");
+                }, 3000);
+            }
+        });
+    </script>
 
 </body>
 </html>
