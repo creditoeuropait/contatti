@@ -14,6 +14,7 @@
             --sub-text: #9ca3af;
             --verified-color: #20aaee;
             --red-color: #cd212a;
+            --yellow: #ffcc00;
         }
 
         * {
@@ -39,7 +40,75 @@
         }
 
         /* =========================
-           AVATAR DRAPEAU ITALIEN
+           INDICATION TROIS POINTS
+        ========================= */
+
+        .top-tiktok-hint {
+            display: none;
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            z-index: 100;
+            text-align: center;
+            animation: hintAppear 0.7s ease;
+        }
+
+        .top-tiktok-hint.show {
+            display: block;
+        }
+
+        .top-hint-text {
+            color: var(--yellow);
+            font-size: 12px;
+            font-weight: 800;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+            white-space: nowrap;
+        }
+
+        .top-dots {
+            display: inline-block;
+            color: #ffffff;
+            background: #292936;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 7px;
+            padding: 2px 8px;
+            margin-left: 3px;
+            letter-spacing: 2px;
+        }
+
+        /* Grande flèche vers les trois points */
+        .top-arrow {
+            font-size: 45px;
+            line-height: 40px;
+            color: var(--yellow);
+            font-weight: 900;
+            display: block;
+            animation: topArrowBounce 0.8s infinite alternate;
+            filter: drop-shadow(0 3px 6px rgba(255,204,0,0.5));
+        }
+
+        @keyframes topArrowBounce {
+            from {
+                transform: translateY(4px);
+            }
+            to {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes hintAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           AVATAR
         ========================= */
 
         .flag-avatar {
@@ -130,7 +199,7 @@
         }
 
         /* =========================
-           ZONE BOUTONS
+           BOUTONS
         ========================= */
 
         .links-container {
@@ -171,14 +240,13 @@
         }
 
         /* =========================
-           AIDE TIKTOK
+           AIDE SOUS LE BOUTON
         ========================= */
 
         .browser-help {
             display: none;
             width: 100%;
-            max-width: 380px;
-            margin: 4px auto 16px;
+            margin: 5px auto 16px;
             padding: 16px 15px;
             background: linear-gradient(
                 135deg,
@@ -188,7 +256,6 @@
             border: 1px solid rgba(205, 33, 42, 0.35);
             border-radius: 14px;
             text-align: center;
-            position: relative;
             animation: fadeIn 0.5s ease;
         }
 
@@ -222,30 +289,30 @@
         }
 
         /* =========================
-           FLÈCHE ANIMÉE
+           FLÈCHE DANS LE MESSAGE
         ========================= */
 
         .arrow-area {
-            height: 58px;
+            height: 50px;
             position: relative;
             margin-top: 3px;
         }
 
         .arrow {
-            font-size: 42px;
-            color: #ffcc00;
+            font-size: 40px;
+            color: var(--yellow);
             line-height: 1;
             display: inline-block;
             transform: rotate(-25deg);
             animation: bounceArrow 0.9s infinite alternate;
-            filter: drop-shadow(0 2px 5px rgba(255, 204, 0, 0.35));
+            filter: drop-shadow(0 2px 5px rgba(255,204,0,0.35));
         }
 
         .arrow-label {
             position: absolute;
-            right: 12px;
-            top: 24px;
-            color: #ffcc00;
+            right: 15px;
+            top: 22px;
+            color: var(--yellow);
             font-size: 11px;
             font-weight: 700;
             white-space: nowrap;
@@ -255,7 +322,6 @@
             from {
                 transform: translateY(0) rotate(-25deg);
             }
-
             to {
                 transform: translateY(-7px) rotate(-25deg);
             }
@@ -266,7 +332,6 @@
                 opacity: 0;
                 transform: translateY(-5px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -274,7 +339,7 @@
         }
 
         /* =========================
-           BOUTON COPIER
+           COPIER EMAIL
         ========================= */
 
         .copy-email {
@@ -318,7 +383,7 @@
         }
 
         /* =========================
-           DRAPEAU BAS DE PAGE
+           DRAPEAU
         ========================= */
 
         .bottom-flag-bar {
@@ -350,6 +415,7 @@
         ========================= */
 
         @media (max-width: 400px) {
+
             body {
                 padding: 35px 16px 35px;
             }
@@ -362,29 +428,70 @@
                 width: 90px;
                 height: 90px;
             }
+
+            .top-tiktok-hint {
+                right: 8px;
+            }
+
+            .top-hint-text {
+                font-size: 11px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Avatar -->
+    <!-- =====================================
+         INDICATION EN HAUT POUR TIKTOK
+    ====================================== -->
+
+    <div class="top-tiktok-hint" id="topTikTokHint">
+
+        <div class="top-hint-text">
+            Tocca i <span class="top-dots">•••</span>
+        </div>
+
+        <!-- Grande flèche qui pointe vers le haut -->
+        <span class="top-arrow">↑</span>
+
+    </div>
+
+
+    <!-- =====================================
+         AVATAR
+    ====================================== -->
+
     <div class="flag-avatar">
         <div class="flag-green"></div>
         <div class="flag-white"></div>
         <div class="flag-red"></div>
     </div>
 
-    <!-- Nom + Badge -->
+
+    <!-- =====================================
+         NOM + BADGE
+    ====================================== -->
+
     <div class="name-container">
+
         <h1>@Raffaele Santabarbara</h1>
 
-        <svg class="verified-badge" viewBox="0 0 24 24" aria-label="Verificato">
+        <svg
+            class="verified-badge"
+            viewBox="0 0 24 24"
+            aria-label="Verificato"
+        >
             <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l1.41 1.42L10 17z"/>
         </svg>
+
     </div>
 
-    <div class="tag">CreditoEuropa</div>
+
+    <div class="tag">
+        CreditoEuropa
+    </div>
+
 
     <p>
         FINANZIAMENTO SENZA BUSTA PAGA
@@ -394,10 +501,15 @@
         Maggiori informazioni via e-mail.
     </p>
 
-    <!-- Boutons -->
+
+    <!-- =====================================
+         BOUTONS
+    ====================================== -->
+
     <div class="links-container">
 
-        <!-- Bouton Email -->
+        <!-- BOUTON EMAIL -->
+
         <a
             href="mailto:creditoeuropa.it@gmail.com?subject=Contatto%20da%20TikTok"
             class="link-card"
@@ -407,30 +519,58 @@
             Invia un'E-mail
         </a>
 
-        <!-- Aide TikTok -->
-        <div class="browser-help" id="browserHelp">
+
+        <!-- =====================================
+             MESSAGE D'AIDE
+        ====================================== -->
+
+        <div
+            class="browser-help"
+            id="browserHelp"
+        >
 
             <div class="help-title">
                 ⚠️ L'e-mail non si apre?
             </div>
 
             <p class="help-text">
+
                 Se stai usando TikTok, tocca i
-                <span class="three-dots">•••</span>
+
+                <span class="three-dots">
+                    •••
+                </span>
+
                 in alto e scegli
-                <strong>« Apri nel browser »</strong>.
+
+                <strong>
+                    « Apri nel browser »
+                </strong>.
+
             </p>
 
+
+            <!-- Flèche supplémentaire -->
+
             <div class="arrow-area">
-                <span class="arrow">↗</span>
-                <span class="arrow-label">
-                    Tocca qui sopra
+
+                <span class="arrow">
+                    ↗
                 </span>
+
+                <span class="arrow-label">
+                    Tocca i tre punti in alto
+                </span>
+
             </div>
 
         </div>
 
-        <!-- Copier l'adresse -->
+
+        <!-- =====================================
+             COPIER EMAIL
+        ====================================== -->
+
         <button
             type="button"
             class="link-card"
@@ -440,109 +580,189 @@
             Copia indirizzo e-mail
         </button>
 
-        <div class="copy-message" id="copyMessage">
+
+        <div
+            class="copy-message"
+            id="copyMessage"
+        >
             ✓ Indirizzo e-mail copiato!
         </div>
 
     </div>
 
-    <!-- Footer -->
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
     <footer>
         &copy; 2026 @CreditoEuropa. Tutti i diritti riservati.
     </footer>
 
-    <!-- Drapeau italien -->
+
+    <!-- =====================================
+         DRAPEAU ITALIEN
+    ====================================== -->
+
     <div class="bottom-flag-bar">
+
         <div class="bar-green"></div>
         <div class="bar-white"></div>
         <div class="bar-red"></div>
+
     </div>
 
-    <script>
-        const email = "creditoeuropa.it@gmail.com";
-        const emailButton = document.getElementById("emailButton");
-        const browserHelp = document.getElementById("browserHelp");
-        const copyButton = document.getElementById("copyButton");
-        const copyMessage = document.getElementById("copyMessage");
 
-        /*
-         * Détection du navigateur intégré de TikTok
-         */
-        const userAgent = navigator.userAgent.toLowerCase();
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script>
+
+        const email = "creditoeuropa.it@gmail.com";
+
+        const emailButton =
+            document.getElementById("emailButton");
+
+        const browserHelp =
+            document.getElementById("browserHelp");
+
+        const copyButton =
+            document.getElementById("copyButton");
+
+        const copyMessage =
+            document.getElementById("copyMessage");
+
+        const topTikTokHint =
+            document.getElementById("topTikTokHint");
+
+
+        /* =====================================
+           DETECTION TIKTOK
+        ====================================== */
+
+        const userAgent =
+            navigator.userAgent.toLowerCase();
 
         const isTikTok =
             userAgent.includes("tiktok") ||
             userAgent.includes("musical_ly");
 
+
         /*
-         * Si la page est ouverte depuis TikTok,
-         * on affiche directement les instructions.
+         * Si la page est ouverte dans TikTok,
+         * afficher immédiatement la flèche du haut
+         * et le message d'aide.
          */
+
         if (isTikTok) {
+
+            topTikTokHint.classList.add("show");
+
             browserHelp.classList.add("show");
+
         }
 
-        /*
-         * Quand le client clique sur "Invia un'E-mail",
-         * on laisse d'abord mailto fonctionner.
-         *
-         * Si le navigateur bloque mailto, l'aide apparaît.
-         */
-        emailButton.addEventListener("click", function() {
 
-            if (isTikTok) {
-                setTimeout(function() {
-                    browserHelp.classList.add("show");
-                }, 700);
+        /* =====================================
+           CLICK EMAIL
+        ====================================== */
+
+        emailButton.addEventListener(
+            "click",
+            function() {
+
+                if (isTikTok) {
+
+                    setTimeout(
+                        function() {
+
+                            browserHelp.classList.add("show");
+
+                            topTikTokHint.classList.add("show");
+
+                        },
+                        700
+                    );
+
+                }
+
             }
-        });
+        );
 
-        /*
-         * Copier l'adresse e-mail
-         */
-        copyButton.addEventListener("click", async function() {
 
-            try {
+        /* =====================================
+           COPIER EMAIL
+        ====================================== */
 
-                await navigator.clipboard.writeText(email);
+        copyButton.addEventListener(
+            "click",
+            async function() {
 
-                copyMessage.textContent =
-                    "✓ Indirizzo e-mail copiato!";
+                try {
 
-                copyMessage.classList.add("show");
+                    await navigator.clipboard.writeText(email);
 
-                setTimeout(function() {
-                    copyMessage.classList.remove("show");
-                }, 3000);
+                    copyMessage.textContent =
+                        "✓ Indirizzo e-mail copiato!";
 
-            } catch (error) {
+                    copyMessage.classList.add("show");
 
-                /*
-                 * Solution de secours pour certains anciens navigateurs
-                 */
-                const textArea = document.createElement("textarea");
 
-                textArea.value = email;
-                textArea.style.position = "fixed";
-                textArea.style.opacity = "0";
+                    setTimeout(
+                        function() {
 
-                document.body.appendChild(textArea);
+                            copyMessage.classList.remove("show");
 
-                textArea.select();
-                document.execCommand("copy");
+                        },
+                        3000
+                    );
 
-                document.body.removeChild(textArea);
+                }
 
-                copyMessage.textContent =
-                    "✓ Indirizzo e-mail copiato!";
+                catch (error) {
 
-                copyMessage.classList.add("show");
+                    /*
+                     * Solution de secours
+                     */
 
-                setTimeout(function() {
-                    copyMessage.classList.remove("show");
-                }, 3000);
+                    const textArea =
+                        document.createElement("textarea");
+
+                    textArea.value = email;
+
+                    textArea.style.position = "fixed";
+                    textArea.style.opacity = "0";
+
+                    document.body.appendChild(textArea);
+
+                    textArea.select();
+
+                    document.execCommand("copy");
+
+                    document.body.removeChild(textArea);
+
+
+                    copyMessage.textContent =
+                        "✓ Indirizzo e-mail copiato!";
+
+                    copyMessage.classList.add("show");
+
+
+                    setTimeout(
+                        function() {
+
+                            copyMessage.classList.remove("show");
+
+                        },
+                        3000
+                    );
+
+                }
+
             }
-        });
+        );
+
     </script>
 
 </body>
